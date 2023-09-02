@@ -1,5 +1,34 @@
 *{
     background-color: gainsboro;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+p{
+    font-size: 16px;
+    background-color: inherit;
+    color: black;
+}
+
+.mainBody{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 45px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.buttonContainer{
+    display: flex;
+    gap: 150px;
 }
 
 .container{
@@ -16,14 +45,23 @@
     justify-content: center;
 }
 
-.xAxis{
-    display: flex;
-    flex-wrap: wrap;
+.yAxis{
+    display: grid;
 }
 
 .block{
     border: white solid 1px;
-    height: 45px;
-    width: 45px;
+    height: 40px;
+    width: 40px;
     background-color: gray;
+}
+
+.Footer{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 40px;
+    background-color: #E5E7EB;
+    margin-top: 10px;
+    border: black solid 1px;
 }
