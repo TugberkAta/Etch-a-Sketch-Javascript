@@ -2,6 +2,7 @@ let height = 15
 let width = 15
 let mode = true;
 let darkMode = true;
+let mouseIsPressed = false;
 
 const randomRgbColor = () => {
     let r = Math.floor(Math.random() * 256); 
@@ -68,20 +69,18 @@ for(let i = 0; i< width; i++){
         let block=document.createElement("div");
         yAxis.appendChild(block);
         block.className="block";
-
-        if(mode===true){
-            block.addEventListener("mouseover",(e) => {
-                e.target.style.backgroundColor = "gainsboro"
+        container.addEventListener("mousemove", (e) => {
+                if (mouseIsPressed) {
+                        const block = e.target;
+                    if (mode === true) {
+                        block.style.backgroundColor = "gainsboro";
+                    } else {
+                        block.style.backgroundColor = randomRgbColor();
+                    }
+                }
             });
         }
-        else{
-            block.addEventListener("mouseover",(e) => {
-                e.target.style.backgroundColor = randomRgbColor();
-                console.log("Mouseover event with mod 0");
-        });
-     }
-}
-}
+    }
 }
 
 createGrid(height, width)
@@ -123,8 +122,16 @@ buttonReset.addEventListener("click", (e)=>{
     }
     else{
         body.style.backgroundColor= "#1F2937"
-        buttonDarkMode.style.backgroundColor="gainsboro"
+        buttonDarkMode.style.backgroundColor="white"
         buttonDarkModeText.style.color = "black"
         buttonDarkModeText.textContent="Light Mode";
     }
   });
+
+  container.addEventListener("mousedown", () => {
+    mouseIsPressed = true;
+});
+
+container.addEventListener("mouseup", () => {
+    mouseIsPressed = false;
+});
