@@ -69,13 +69,12 @@ for(let i = 0; i< width; i++){
         let block=document.createElement("div");
         yAxis.appendChild(block);
         block.className="block";
-        container.addEventListener("mousemove", (e) => {
+        container.addEventListener("mouseover", (e) => {
                 if (mouseIsPressed) {
-                        const block = e.target;
                     if (mode === true) {
-                        block.style.backgroundColor = "gainsboro";
+                        e.target.style.backgroundColor = "gainsboro";
                     } else {
-                        block.style.backgroundColor = randomRgbColor();
+                        e.target.style.backgroundColor = randomRgbColor();
                     }
                 }
             });
