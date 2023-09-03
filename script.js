@@ -1,34 +1,62 @@
 let height = 15
 let width = 15
+let mode = true;
+let darkMode = true;
+
+const randomRgbColor = () => {
+    let r = Math.floor(Math.random() * 256); 
+    let g = Math.floor(Math.random() * 256); 
+    let b = Math.floor(Math.random() * 256); 
+    return 'rgb(' + r + ',' + g + ',' + b + ')';
+  };
 
 const body = document.body;
 const mainBody = document.createElement("div")
 const playField = document.createElement("div");
 const container = document.createElement("div");
 const buttonContainer = document.createElement("div")
+
 const buttonCreate = document.createElement("button")
 const buttonReset = document.createElement("button")
+const buttonRainbow = document.createElement("button")
+const buttonDarkMode = document.createElement("button")
+
 const buttonCreateText = document.createElement("p")
 const buttonResetText = document.createElement("p")
+const buttonRainbowText = document.createElement("p")
+const buttonDarkModeText = document.createElement("p")
 
 body.append(mainBody);
-mainBody.append(buttonContainer)
-buttonContainer.append(buttonCreate);
-buttonContainer.append(buttonReset);
+mainBody.append(buttonContainer);
 mainBody.append(playField);
 playField.append(container);
+
+buttonContainer.append(buttonCreate);
+buttonContainer.append(buttonReset);
+buttonContainer.append(buttonRainbow);
+buttonContainer.append(buttonDarkMode);
+
 buttonCreate.append(buttonCreateText);
-buttonReset.append(buttonResetText)
+buttonReset.append(buttonResetText);
+buttonRainbow.append(buttonRainbowText);
+buttonDarkMode.append(buttonDarkModeText);
 
 buttonCreateText.textContent="Click Here To Resize";
-buttonResetText.textContent="Click Here To Reset"
+buttonResetText.textContent="Click Here To Reset";
+buttonRainbowText.textContent="Change Mode";
+buttonDarkModeText.textContent="Dark Mode";
 
 container.className="container";
 playField.className="playField";
 mainBody.className="mainBody";
+buttonContainer.className = "buttonContainer"
 buttonCreate.className = "button";
 buttonReset.className = "button";
-buttonContainer.className = "buttonContainer"
+buttonRainbow.className = "button"
+buttonDarkMode.className = "button"
+body.style.backgroundColor= "gainsboro"
+buttonDarkMode.style.backgroundColor ="#1F2937"
+buttonDarkModeText.style.color = "white"
 
 
 function createGrid(height, width){
@@ -41,11 +69,18 @@ for(let i = 0; i< width; i++){
         yAxis.appendChild(block);
         block.className="block";
 
-        block.addEventListener("mouseover",(e) => {
-            e.target.style.opacity = 0.5;
+        if(mode===true){
+            block.addEventListener("mouseover",(e) => {
+                e.target.style.backgroundColor = "gainsboro"
+            });
+        }
+        else{
+            block.addEventListener("mouseover",(e) => {
+                e.target.style.backgroundColor = randomRgbColor();
+                console.log("Mouseover event with mod 0");
         });
-
      }
+}
 }
 }
 
@@ -64,12 +99,32 @@ buttonCreate.addEventListener("click", (e)=>{
 });
 
 buttonReset.addEventListener("click", (e)=>{
-            let blocks = document.querySelectorAll(".block")
-            blocks.forEach(block =>{
-                block.style.opacity = 1;
-            });
-        });
+        let blocks = document.querySelectorAll(".block")
+        blocks.forEach(block =>{
+            container.innerHTML= "";
+            createGrid(height, width)
+     });
+ });
 
+ buttonRainbow.addEventListener("click", (e) => {
+    mode = !mode;
+    container.innerHTML= "";
+    createGrid(height, width)
+  });
 
+  buttonDarkMode.addEventListener("click", (e) => {
+    darkMode = !darkMode;
 
-
+    if(darkMode === true){
+        body.style.backgroundColor= "gainsboro"
+        buttonDarkMode.style.backgroundColor ="#1F2937"
+        buttonDarkModeText.style.color = "white"
+        buttonDarkModeText.textContent="Dark Mode";
+    }
+    else{
+        body.style.backgroundColor= "#1F2937"
+        buttonDarkMode.style.backgroundColor="gainsboro"
+        buttonDarkModeText.style.color = "black"
+        buttonDarkModeText.textContent="Light Mode";
+    }
+  });
