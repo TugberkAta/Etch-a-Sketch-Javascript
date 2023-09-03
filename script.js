@@ -42,9 +42,9 @@ buttonReset.append(buttonResetText);
 buttonRainbow.append(buttonRainbowText);
 buttonDarkMode.append(buttonDarkModeText);
 
-buttonCreateText.textContent="Click Here To Resize";
-buttonResetText.textContent="Click Here To Reset";
-buttonRainbowText.textContent="Change Mode";
+buttonCreateText.textContent="Resize";
+buttonResetText.textContent="Reset";
+buttonRainbowText.textContent="Rainbow Mode";
 buttonDarkModeText.textContent="Dark Mode";
 
 container.className="container";
@@ -97,12 +97,10 @@ buttonCreate.addEventListener("click", (e)=>{
 });
 
 buttonReset.addEventListener("click", (e)=>{
-        let blocks = document.querySelectorAll(".block")
-        blocks.forEach(block =>{
             container.innerHTML= "";
             createGrid(height, width)
      });
- });
+
 
  buttonRainbow.addEventListener("click", (e) => {
     mode = !mode;

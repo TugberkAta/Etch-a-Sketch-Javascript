@@ -5,6 +5,7 @@
 p{
     font-size: 16px;
     background-color: inherit;
+    font-weight: bold;
 }
 
 .mainBody{
@@ -62,4 +63,8 @@ p{
     background-color: #E5E7EB;
     margin-top: 10px;
     border: black solid 1px;
+}
+
+#footerText{
+    font-weight: normal;
 }
