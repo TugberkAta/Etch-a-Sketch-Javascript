@@ -125,7 +125,7 @@ buttonReset.addEventListener("click", (e)=>{
     }
   });
 
-  container.addEventListener("mousedown", () => {
+container.addEventListener("mousedown", () => {
     mouseIsPressed = true;
 });
 
